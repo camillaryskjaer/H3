@@ -16,6 +16,9 @@ namespace Starwars
             List<Planet> planets = LoadData();
 
             //Opgave 1
+            
+            //Hvorfor ikke bruge metoden StartsWith?
+            //x.Name.StartsWith("M")
             var col = planets.Where(x => x.Name[0] == 'M');
             foreach (var name in col)
             {
@@ -23,6 +26,9 @@ namespace Starwars
             }
 
             //Opgave 2
+            //Du har muligheden for at ignorere små og store bogstaver ved at omforme alt til lower case
+            var col2 = planets.Where(x => x.Name.ToLowerCase().Contains("y") );
+       
             var col2 = planets.Where(x => x.Name.Contains("y") || x.Name.Contains("Y"));
             foreach (var item in col2)
             {
@@ -60,6 +66,9 @@ namespace Starwars
             }
 
             //Opgave 7
+            //Er der nogle grund til at du ikke gør det hele på een gang?
+              var col7 = planets.Where(x => x.RotationPeriod > 30).OrderBy(x => x.RotationPeriod).ThenBy(x => x.Name);
+            
             var col7 = planets.Where(x => x.RotationPeriod > 30);
             col7 = col7.OrderBy(x => x.RotationPeriod).ThenBy(x => x.Name);
             foreach (var item in col7)
